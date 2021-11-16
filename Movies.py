@@ -3,6 +3,17 @@ tones = ['Tragic', 'Sad', 'Serious', 'Optimistic', 'Funny']
 themes = ['Romance', 'Adventure', 'Coming of Age', 'Slice of Life', 'Social/Political']
 eras = ['Silent', 'Black and White', 'Classic', '80s', '1990 - 2005', 'Current']
 
+class Movie:
+    def __init__(self, title, setting, tone, theme, era, rating):
+        self.title = title
+        self.setting = setting
+        self.tone = tone
+        self.theme = theme
+        self.era = era
+        self.rating = rating
+    def __str__(self):
+        return self.title
+
 def import_movies():
     movies = []
     with open('Movies.txt','r') as m:
@@ -10,13 +21,7 @@ def import_movies():
     m.close()
     for line in lines:
         movie_lst = line.split(',,')
-        movie = {}
-        movie['title'] = movie_lst[0]
-        movie['setting'] = movie_lst[1]
-        movie['tone'] = movie_lst[2]
-        movie['theme'] = movie_lst[3]
-        movie['era'] = movie_lst[4]
-        movie['rating'] = int(movie_lst[5])
+        movie = Movie(movie_lst[0], movie_lst[1], movie_lst[2], movie_lst[3], movie_lst[4], int(movie_lst[5]))
         movies.append(movie)
     return movies
 
