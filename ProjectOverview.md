@@ -7,7 +7,7 @@ Movie Recommender is a Python application designed to recommend movies based on 
 
 The user answers four questions about their preferences - namely Genre, Tone, Theme and Era - and is then provided with a movie recommendation that best fits those stated preferences, and can ask for more movies to be shown if they don't like the first option.
 
-**Genre** in this context refers to the setting of the movie. It can be Fantasy, Science Fiction, Historical, Military, Urban or Other.
+**Setting** The setting of the movie. It can be Fantasy, Science Fiction, Historical, Military, Urban or Other.
 
 **Tone** can be Tragic, Sad, Serious, Optimistic or Funny.
 
