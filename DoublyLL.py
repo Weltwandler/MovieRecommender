@@ -1,5 +1,7 @@
 from os import remove
 
+# This is a completely straightforward implementation of a doubly-linked list - nothing unusual about it
+
 class Node:
     def __init__(self, value, next_node=None, prev_node=None):
         self.value = value
