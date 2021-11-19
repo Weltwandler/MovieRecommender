@@ -1,3 +1,5 @@
+from Heapsort import MaxHeap
+
 settings = ['Fantasy', 'Science Fiction', 'Historical', 'Military', 'Urban', 'Other']
 tones = ['Tragic', 'Sad', 'Serious', 'Optimistic', 'Funny']
 themes = ['Romance', 'Adventure', 'Coming of Age', 'Slice of Life', 'Social/Political']
@@ -13,6 +15,7 @@ class Movie:
         self.rating = rating
     def __str__(self):
         return self.title
+    
 
 def import_movies():
     movies = []
@@ -53,6 +56,24 @@ def get_lst_entry(lst, name):
         else:
             print("Invalid Selection - please try again")
     return lst[user_idx - 1]
+
+def movie_picker_helper(movies):
+    print("What setting should your movie have?")
+    setting = get_lst_entry(settings, 'setting')
+    print('And what tone would you like?')
+    tone = get_lst_entry(tones, 'tone')
+    print('And what theme sounds most appealing to you?')
+    theme = get_lst_entry(themes, 'theme')
+    print('Lastly, please choose an era!')
+    era = get_lst_entry(eras, 'era')
+
+    movie_options = MaxHeap()
+
+    for movie in movies:
+        if movie.setting == setting and movie.tone == tone and movie.theme == theme and movie.era == era:
+            movie_options.add(movie)
+    
+    return movie_options
 
 #For testing only - remove before finalizing:
 

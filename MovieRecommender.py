@@ -1,5 +1,6 @@
-from Movies import import_movies, add_movies, Movie
+from Movies import import_movies, add_movies, movie_picker_helper, Movie
 from DoublyLL import DoublyLinkedList
+from Heapsort import MaxHeap
 
 def pick_movies():
     pass
@@ -20,4 +21,28 @@ choice = get_choice()
 if choice == '1':
     add_movies()
 else:
-    pick_movies()
+    movie_options = movie_picker_helper(movies)
+    movie_list = DoublyLinkedList()
+    while len(movie_options.heap_list) > 1:
+        print(len(movie_options.heap_list))
+        movie_list.add_to_tail(movie_options.retrieve_max())
+    movie_to_show = movie_list.head_node
+    if movie_to_show != None:
+        print("Your recommended movie is: " + str(movie_to_show.get_value()))
+        choice = int(input("Press 2 to get the next-best recommendation or 0 to exit: "))
+        movie_to_show = movie_to_show.get_next_node()
+    else:
+        choice = 0
+    while choice > 0:
+        if movie_to_show:
+            print("Your recommended movie is: " + str(movie_to_show.get_value()))
+            choice = int(input("Press 1 to go back, 2 to get the next-best recommendation or 0 to exit: "))
+            if choice == 1:
+                movie_to_show = movie_to_show.get_prev_node()
+            elif choice == 2:
+                movie_to_show = movie_to_show.get_next_node()
+        else:
+            print("There are no more recommendations.")
+            choice = int(input("Press 1 to go back or 0 to exit: "))
+            movie_to_show = movie_list.tail_node
+    print("Have a nice day!")
